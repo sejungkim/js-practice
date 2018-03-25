@@ -1,3 +1,4 @@
+// practice data
 const widget = {
   "debug": "on",
   "window": {
@@ -25,22 +26,21 @@ const widget = {
   }
 }
 
-let result = [];
-function seekKeyHasNumber(obj) {
+function seekKeyHasNumber(obj, result = []) {
   for (let v in obj) {
     switch (typeof obj[v]) {
       case 'object':
-        seekKeyHasNumber(obj[v]);
+        seekKeyHasNumber(obj[v], result);
         break;
       case 'number':
         result.push(v);
         break;
     }
   }
+  return result;
 }
 
-seekKeyHasNumber(widget);
-console.log(result);
+console.log(seekKeyHasNumber(widget));
 
 /*
 //ver.whale
