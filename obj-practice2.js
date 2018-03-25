@@ -88,7 +88,6 @@ function seekNameHasSK(obj, result = []) {
     else if (v === 'type' && obj[v] === 'sk') {
       result.push(obj.name);
     }
-    else continue;
   }
   return result;
 }
