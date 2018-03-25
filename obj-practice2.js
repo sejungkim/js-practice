@@ -1,3 +1,4 @@
+// practice data
 var data = [{
   "id": 1,
   "name": "Yong",
@@ -79,18 +80,17 @@ var data = [{
   }]
 }]
 
-let result = [];
-function seekNameHasSK(obj) {
+function seekNameHasSK(obj, result = []) {
   for (let v in obj) {
     if (typeof obj[v] === 'object') {
-      seekNameHasSK(obj[v]);
+      seekNameHasSK(obj[v], result);
     }
     else if (v === 'type' && obj[v] === 'sk') {
       result.push(obj.name);
     }
     else continue;
   }
+  return result;
 }
 
-seekNameHasSK(data);
-console.log(result);
+console.log(seekNameHasSK(data));
