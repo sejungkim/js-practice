@@ -10,12 +10,9 @@ function delayPrint(num) {
 
 function pipe(...funs) {
   function innerFunc(value) {
-    const parseIntFun = funs[0];
-    const doubleNumFun = funs[1];
-    const delayPrintFun = funs[2];
-    const result1 = parseIntFun(value);
-    const result2 = doubleNumFun(result1);
-    const result3 = delayPrintFun(result2);
+    const result1 = funs[0](value);
+    const result2 = funs[1](result1);
+    const result3 = funs[2](result2);
     return result3;
   }
   return innerFunc;
