@@ -9,10 +9,9 @@ function delayPrint(num) {
 }
 
 function pipe(...funs) {
-  function innerFunc(value) {
+  return function (value) {
     return funs[2](funs[1](funs[0](value)));
-  }
-  return innerFunc;
+  };
 }
 
 
