@@ -10,10 +10,7 @@ function delayPrint(num) {
 
 function pipe(...funs) {
   function innerFunc(value) {
-    const result1 = funs[0](value);
-    const result2 = funs[1](result1);
-    const result3 = funs[2](result2);
-    return result3;
+    return funs[2](funs[1](funs[0](value)));
   }
   return innerFunc;
 }
