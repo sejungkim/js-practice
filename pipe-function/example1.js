@@ -10,9 +10,9 @@ function delayPrint(num) {
 
 function pipe(...funs) {
   return function (value) {
-    for (let i = 0; i < funs.length; i++) {
-      value = funs[i](value);
-    }
-    return value;
+    let result = funs.reduce(function (prev, curr) {
+      return curr(prev);
+    }, value);
+    return result;
   };
 }
