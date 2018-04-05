@@ -1,3 +1,5 @@
+const pipe = (...funs) => value => funs.reduce((val, fun) => fun(val), value);
+
 pipe(parseInt, doubleNum, delayPrint)('2018');
 
 function doubleNum(num) {
@@ -6,9 +8,4 @@ function doubleNum(num) {
 
 function delayPrint(num) {
   setTimeout(() => console.log(num), 1000);
-}
-
-function pipe(...funs) {
-  return value =>
-    funs.reduce((val, fun) => fun(val), value);
 }
