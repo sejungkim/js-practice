@@ -10,8 +10,10 @@ function delayPrint(num) {
 
 function pipe(...funs) {
   return function (value) {
-    return funs[2](funs[1](funs[0](value)));
+    let result = funs[0](value);
+    for (let i = 1; i < funs.length; i++) {
+      result = funs[i](result);
+    }
+    return result;
   };
 }
-
-
