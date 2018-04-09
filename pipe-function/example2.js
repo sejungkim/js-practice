@@ -6,9 +6,7 @@ const trimmedArray = arr => arr.map(val => val.trim());
 function makeTodoObject(arr) {
   const result = arr.reduce(function (obj, target) {
     const keyAndVal = target.split('$');
-    if (!(keyAndVal[0] in obj)) {
-      obj[keyAndVal[0]] = [];
-    }
+    obj[keyAndVal[0]] = obj[keyAndVal[0]] || [];
     obj[keyAndVal[0]].push(keyAndVal[1]);
     return obj;
   }, {});
