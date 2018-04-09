@@ -4,13 +4,12 @@ const split = str => str.split(",");
 const trimmedArray = arr => arr.map(val => val.trim());
 
 function makeTodoObject(arr) {
-  const result = arr.reduce(function (obj, target) {
+  return arr.reduce((obj, target) => {
     const keyAndVal = target.split('$');
     obj[keyAndVal[0]] = obj[keyAndVal[0]] || [];
     obj[keyAndVal[0]].push(keyAndVal[1]);
     return obj;
   }, {});
-  return result;
 }
 
 console.log(makeTodoObject(trimmedArray(split(s))));
