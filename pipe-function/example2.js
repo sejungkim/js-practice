@@ -9,5 +9,5 @@ const makeTodoObject = arr => arr.reduce((obj, target) => {
 
 const s = 'todo$공부하기 , todo$알고리즘공부 , doing$스터디하기';
 const pipe = (...funs) => value => funs.reduce((val, fun) => fun(val), value);
-const result = pipe(split, trimmedArray, makeTodoObject)(s);
-console.log(result);
+const getTodoInfo = pipe(split, trimmedArray, makeTodoObject);
+console.log(getTodoInfo(s));
