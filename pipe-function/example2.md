@@ -120,7 +120,30 @@ const makeTodoObject = arr => arr.reduce((obj, target) => {
 ### 5. pipe function
 example1에서 만든 pipe 함수를 이용한다.
 ```javascript
+const s = 'todo$공부하기 , todo$알고리즘공부 , doing$스터디하기';
 const pipe = (...funs) => value => funs.reduce((val, fun) => fun(val), value);
+const result = pipe(split, trimmedArray, makeTodoObject)(s);
+console.log(result);
 ```
+#### 5.1.
+가독성을 위해 새로운 변수에 pipe 함수를 할당하여 사용해본다.
+```javascript
+const getTodoInfo = pipe(split, trimmedArray, makeTodoObject);
+console.log(getTodoInfo(s));
+```
+### 6. 결과
+```javascript
+const split = str => str.split(",");
+const trimmedArray = arr => arr.map(val => val.trim());
+const makeTodoObject = arr => arr.reduce((obj, target) => {
+  const keyAndVal = target.split('$');
+  obj[keyAndVal[0]] = obj[keyAndVal[0]] || [];
+  obj[keyAndVal[0]].push(keyAndVal[1]);
+  return obj;
+}, {});
 
-
+const s = 'todo$공부하기 , todo$알고리즘공부 , doing$스터디하기';
+const pipe = (...funs) => value => funs.reduce((val, fun) => fun(val), value);
+const getTodoInfo = pipe(split, trimmedArray, makeTodoObject);
+console.log(getTodoInfo(s));
+```
