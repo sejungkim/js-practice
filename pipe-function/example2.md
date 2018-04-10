@@ -6,7 +6,7 @@ var s = 'todo$공부하기 , todo$알고리즘공부 , doing$스터디하기';
 pipe(split, trimmedArray, makeTodoObject)(s);
 // { todo:["공부하기","알고리즘공부"],doing:["스터디하기"] }
 ```
----
+----------
 ### 2. split function
 #### 2.1.
 정리되지 않은 문자열 `s`를 `,`기준으로 끊어 배열로 만들어주는 split 함수를 만든다.
@@ -29,7 +29,7 @@ const split = str => str.split(",");
 ```
 [ 'todo$공부하기 ', ' todo$알고리즘공부 ', ' doing$스터디하기' ]
 ```
----
+----------
 ### 3. trimmedArray function
 #### 3.1.
 배열 안에 있는 문자열이 가진 앞, 뒤의 공백을 제거한 후 다시 배열로 반환하는 trimmedArray 함수를 만든다.
@@ -54,7 +54,7 @@ const trimmedArray = arr => arr.map(val => val.trim());
 ```
 [ 'todo$공부하기', 'todo$알고리즘공부', 'doing$스터디하기' ]
 ```
----
+----------
 ### 4. makeTodoObject function
 #### 4.1.
 split과 trimmedArray를 거쳐 어느 정도 정리된 배열 데이터를 `$`기준으로 끊어 각각 객체의 키와 값으로 만드는 makeTodoObject 함수를 만든다.
@@ -116,7 +116,7 @@ const makeTodoObject = arr => arr.reduce((obj, target) => {
 ```
 { todo: [ '공부하기', '알고리즘공부' ], doing: [ '스터디하기' ] }
 ```
----
+----------
 ### 5. pipe function
 example1에서 만든 pipe 함수를 이용한다.
 ```javascript
@@ -131,6 +131,7 @@ console.log(result);
 const getTodoInfo = pipe(split, trimmedArray, makeTodoObject);
 console.log(getTodoInfo(s));
 ```
+----------
 ### 6. 결과
 ```javascript
 const split = str => str.split(",");
