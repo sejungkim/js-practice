@@ -4,7 +4,7 @@ pipe function - example1
 ```javascript
 pipe(parseInt, doubleNum, delayPrint)('2018'); // 4036
 ```
----
+----------
 ### 2. pipe function 구현 과정
 #### 2.1.
 파이프 함수는 함수를 인자로 받고 함수를 리턴함.
@@ -130,18 +130,19 @@ pipe 함수를 arrow function으로 변경.
 ```javascript
 const pipe = (...funs) => value => funs.reduce((val, fun) => fun(val), value);
 ```
----
-### 3. 결과
+----------
+### 3. 그 외 함수
+doubleNum 함수와 delayPrint 함수를 arrow function으로 수정.
 ```javascript
+const doubleNum = num => num * 2;
+const delayPrint = num => setTimeout(() => console.log(num), 1000);
+```
+----------
+### 4. 결과
+```javascript
+const doubleNum = num => num * 2;
+const delayPrint = num => setTimeout(() => console.log(num), 1000);
 const pipe = (...funs) => value => funs.reduce((val, fun) => fun(val), value);
 
 pipe(parseInt, doubleNum, delayPrint)('2018');
-
-function doubleNum(num) {
-  return num * 2;
-}
-
-function delayPrint(num) {
-  setTimeout(() => console.log(num), 1000);
-}
 ```
